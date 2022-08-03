@@ -33,10 +33,10 @@ If your wiring doesn't work you can try swapping the RX/TX directions, but make 
 
 ## Configuration
 
-- common.yaml : A port of my common esphome configuration I use for most projects.
+- common/common.yaml : A port of my common esphome configuration I use for most projects.
+- common/secrets.yaml : An example secrets file which gets used by my common configuration.
 - modbus-test.yaml : An example configuration file for a TinyPICO ESP32 connected to a Renogy Wanderer Charge Controller with Modbus.
 - renogy-modbus.yaml : The Renogy-specific configuration for UART, Modbus, Sensor registers, and switchable load (light, etc).
-- secrets.yaml : An example secrets file which gets used by my common configuration.
 
 ## Nota Bene
 
