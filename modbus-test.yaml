@@ -6,8 +6,8 @@ substitutions:
   deviceDescription: Modbus Test
 
 packages:
-  common: !include common.yaml
-  renogy-modbus: !include renogy-modbus.yaml
+  common: !include common/common.yaml
+  renogy-modbus: !include common/renogy-modbus.yaml
 
 esphome:
   name: modbus-test
