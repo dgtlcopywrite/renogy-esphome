@@ -31,11 +31,19 @@ If your wiring doesn't work you can try swapping the RX/TX directions, but make 
 
 **Please** double-check the schematics, pinouts, and datasheets they provide to avoid any possible damage--I take no responsibility for my memory!  When I was playing around with this I did some sanity checking with a multimeter to make sure I didn't fry an ESP with RS-232 level voltages--read the note in the first github link RE: RJ12 pinout.
 
+## Configuration
+
+- common.yaml : A port of my common esphome configuration I use for most projects.
+- modbus-test.yaml : An example configuration file for a TinyPICO ESP32 connected to a Renogy Wanderer Charge Controller with Modbus.
+- renogy-modbus.yaml : The Renogy-specific configuration for UART, Modbus, Sensor registers, and switchable load (light, etc).
+- secrets.yaml : An example secrets file which gets used by my common configuration.
+
 ## Nota Bene
 
 1. Your ESP's TX and RX pin may be different depending on which controller you're using and how you choose to set it up. 
 2. The modbus controller address that worked for me was 0xFF, despite just about everyone else and everything stating it should be 0x00. I never had the time to figure out why, so try the other if one doesn't work.
-3. I have the update interval set at 3s which may be a bit aggressive. I am using skip_updates on the less relevant fields like daily statistics. You might want to play with these values for your use case. ESPHome will automatically group up simultaneous queries if the memory addresses are adjacent, which reduces the overhead in the payload and speeds up communication. I remember seeing various warnings in the logs about overlapping/repeating addresses, but I do not remember how well-optimized I got this before I shelved the project, so it warrants some playing around. If you're not planning on using a bunch of the extra data fields they can just be omitted, but it's cool how much data this little thing tracks.
+3. The log level is set to DEBUG in the test file--helpful when benchtesting, noisy when in use.
+4. I have the update interval set at 3s which may be a bit aggressive for everything. I am using skip_updates on the less relevant fields like daily statistics. You might want to play with these values for your use case. ESPHome will automatically group up simultaneous queries if the memory addresses are adjacent, which reduces the overhead in the payload and speeds up communication. I remember seeing various warnings in the logs about overlapping/repeating addresses and requests being sent before the previous completed, but I do not remember how well-optimized I got this before I shelved the project, so it warrants some playing around. If you're not planning on using a bunch of the extra data fields they can just be omitted, but it's cool how much data this little thing tracks.
 
 ## Disclaimer
 

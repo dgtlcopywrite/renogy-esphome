@@ -11,7 +11,7 @@ preferences:
   flash_write_interval: 5min
 
 logger:
-  level: DEBUG
+  level: INFO
 
 ota:
   password: !secret ota_password

@@ -15,6 +15,9 @@ esphome:
 esp32:
   board: tinypico
 
+logger:
+  level: DEBUG
+
 web_server:
   port: 80
 
