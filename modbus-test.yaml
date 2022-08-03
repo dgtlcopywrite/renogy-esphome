@@ -1,0 +1,23 @@
+substitutions:
+  location: modbus
+  locationName: Modbus
+  device: test
+  deviceName: Test
+  deviceDescription: Modbus Test
+
+packages:
+  common: !include common.yaml
+  renogy-modbus: !include renogy-modbus.yaml
+
+esphome:
+  name: modbus-test
+
+esp32:
+  board: tinypico
+
+web_server:
+  port: 80
+
+uart:
+  tx_pin: 23
+  rx_pin: 19

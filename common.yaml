@@ -1,0 +1,58 @@
+api:
+  encryption:
+    key: !secret encryption_key
+  password: !secret ota_password
+
+esphome:
+  name: ${location}-${device}
+  comment: $deviceDescription
+  
+preferences:
+  flash_write_interval: 5min
+
+logger:
+  level: DEBUG
+
+ota:
+  password: !secret ota_password
+
+time:
+  - platform: homeassistant
+    id: ha_time
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_psk
+  power_save_mode: light
+  ap:
+    ssid: $locationName $deviceName
+    password: !secret fallback_psk
+
+#region Sensors
+
+binary_sensor:
+
+  - platform: status
+    name: ${locationName} ${deviceName} Status
+    id: ${location}_${device}_status
+    entity_category: diagnostic
+
+sensor:
+
+  - platform: wifi_signal
+    name: $locationName $deviceName WiFi Signal
+    id: ${location}_${device}_wifi_signal
+    entity_category: diagnostic
+    update_interval: 60s
+
+  - platform: uptime
+    name: $locationName $deviceName Uptime
+    id: ${location}_${device}_uptime
+    entity_category: diagnostic
+    accuracy_decimals: 0
+    unit_of_measurement: m
+    update_interval: 60s
+    filters:
+      - lambda: return x / 60;
+
+#endregion
