@@ -142,7 +142,7 @@ sensor:
     value_type: U_WORD
     accuracy_decimals: 2
     filters:
-      - multiply: 0.1
+      - multiply: 0.01
 
   - id: ${location}_${device}_solar_power
     name: $locationName $deviceName Solar Power
